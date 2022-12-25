@@ -22,9 +22,9 @@
         INNER JOIN course_details cd ON cd.code = c.code
         INNER JOIN course_participants cp ON cp.course_id = c.id
         INNER JOIN accounts a ON a.id = c.lecturer_id
-        WHERE cp.student_id = '$accID'  
+        WHERE cp.student_id = '$accID' AND c.status = 'active'
       ");
-      $result = mysqli_fetch_assoc($query);
+      while ($row = mysqli_fetch_assoc($query)) $result[] = $row;
       break;
     case 'lecturer':
       break;
