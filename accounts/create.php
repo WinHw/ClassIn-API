@@ -1,5 +1,5 @@
 <?php
-  require_once('../connection.php');
+  require_once('../open_connection.php');
 
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -14,4 +14,6 @@
       echo json_encode(array('message'=>'account data failed to add.'));
     }
   }
+
+  require_once('../close_connection.php');
 ?>

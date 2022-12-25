@@ -1,5 +1,5 @@
 <?php
-  require_once('../connection.php');
+  require_once('../open_connection.php');
 
   $id = $_GET['id'];
   if(!$id){
@@ -12,4 +12,6 @@
       echo json_encode(array('message'=>'accounts data failed to delete.'));
     }
   }
+
+  require_once('../close_connection.php');
 ?>

@@ -1,5 +1,5 @@
 <?php
-  require_once('../connection.php');
+  require_once('../open_connection.php');
 
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -15,4 +15,6 @@
     http_response_code(404);
     exit;
   }
+
+  require_once('../close_connection.php');
 ?>

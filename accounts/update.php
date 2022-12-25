@@ -1,5 +1,5 @@
 <?php
-  require_once('../connection.php');
+  require_once('../open_connection.php');
 
   $id = $_POST['id'];
   $username = $_POST['username'];
@@ -14,4 +14,6 @@
       echo json_encode(array('message'=>'account data failed to update.'));
     }
   }
+
+  require_once('../close_connection.php');
 ?>
