@@ -4,13 +4,12 @@
   $username = $_POST['username'];
   $password = $_POST['password'];
   
-  $query = mysqli_query($CON,"SELECT id FROM accounts WHERE username='$username' AND password='$password'");
-  $result = mysqli_fetch_row($query);
-  $data['id'] = $result[0] ?? null;
+  $query = mysqli_query($CON,"SELECT id, name, level FROM accounts WHERE username='$username' AND password='$password'");
+  $result = mysqli_fetch_assoc($query);
 
-  if ($data['id']) {
+  if ($result) {
     http_response_code(200);
-    echo json_encode($data);
+    echo json_encode($result);
   } else {
     http_response_code(404);
     exit;
