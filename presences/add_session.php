@@ -24,8 +24,8 @@
   } else {
     echo json_encode([
       "error" => true,
-      // "message" => 'Session is failed to be added'
-      "message" => mysqli_error($CON)
+      "message" => 'Session is failed to be added'
+      // "message" => mysqli_error($CON)
     ]);
   }
 
