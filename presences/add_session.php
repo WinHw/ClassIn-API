@@ -2,18 +2,31 @@
   require_once('../open_connection.php');
 
   $course_id = $_POST['course_id'];
+  $description = $_POST['description'];
   $start = $_POST['start_datetime'];
   $end = $_POST['end_datetime'];
+  $location = "";
 
-  if (!$username || !$password) {
-    echo json_encode(array('message'=>'required field is empty.'));
+  $query = mysqli_multi_query($CON, "
+  INSERT INTO course_presences (course_id, start, end, location, description)
+  VALUES ('$course_id', '$start', '$end', '$location', '$description');
+  SET @inserted_id = LAST_INSERT_ID();
+  INSERT INTO participants_presences
+  (course_presence_id, participant_id)
+  SELECT @inserted_id as course_presence_id, id as participant_id FROM course_participants WHERE course_id = '$course_id' ;
+  ");
+
+  if ($query) {
+    echo json_encode([
+      "error" => false,
+      "message" => 'Session is successfully added'
+    ]);
   } else {
-    $query = mysqli_query($CON, "INSERT INTO accounts VALUES ('', '$username','$password')");
-    if ($query) {
-      echo json_encode(array('message'=>'account data successfully added.'));
-    } else {
-      echo json_encode(array('message'=>'account data failed to add.'));
-    }
+    echo json_encode([
+      "error" => true,
+      // "message" => 'Session is failed to be added'
+      "message" => mysqli_error($CON)
+    ]);
   }
 
   require_once('../close_connection.php');
