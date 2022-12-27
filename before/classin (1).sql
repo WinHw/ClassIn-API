@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2022 at 04:47 PM
+-- Generation Time: Dec 25, 2022 at 04:49 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -133,8 +133,7 @@ CREATE TABLE `course_presences` (
   `status` enum('opened','closed','cancelled') NOT NULL,
   `location` text NOT NULL,
   `lecturer_location` text NOT NULL,
-  `lecturer_datetime` datetime NOT NULL,
-  `description` text NOT NULL
+  `lecturer_datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
