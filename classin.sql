@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2022 at 04:47 PM
+-- Generation Time: Dec 27, 2022 at 07:19 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -130,7 +130,7 @@ CREATE TABLE `course_presences` (
   `course_id` int(10) UNSIGNED NOT NULL,
   `start` datetime NOT NULL DEFAULT current_timestamp(),
   `end` datetime NOT NULL,
-  `status` enum('opened','closed','cancelled') NOT NULL,
+  `status` enum('opened','closed','cancelled') NOT NULL DEFAULT 'opened',
   `location` text NOT NULL,
   `lecturer_location` text NOT NULL,
   `lecturer_datetime` datetime NOT NULL,
